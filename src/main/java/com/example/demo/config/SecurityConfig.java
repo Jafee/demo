@@ -18,7 +18,6 @@ package com.example.demo.config;
     public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-//        private FindByIndexNameSessionRepository<Session> sessionRepository;
         @Autowired
         FindByIndexNameSessionRepository<? extends Session> sessionRepository;
 
@@ -64,6 +63,7 @@ package com.example.demo.config;
         @Bean
         RememberMeServices rememberMeServices() {
             SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
+            rememberMeServices.setAlwaysRemember(true);
             return rememberMeServices;
         }
 
