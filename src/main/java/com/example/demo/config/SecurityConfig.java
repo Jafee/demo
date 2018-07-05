@@ -9,24 +9,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.RememberMeServices;
-import org.springframework.session.FindByIndexNameSessionRepository;
-import org.springframework.session.Session;
-import org.springframework.session.security.SpringSessionBackedSessionRegistry;
-import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
+//import org.springframework.session.FindByIndexNameSessionRepository;
+//import org.springframework.session.Session;
+//import org.springframework.session.security.SpringSessionBackedSessionRegistry;
+//import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-        @Autowired
-        FindByIndexNameSessionRepository<? extends Session> sessionRepository;
+//    @Autowired
+//    FindByIndexNameSessionRepository<? extends Session> sessionRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .sessionManagement()
-                .maximumSessions(1)
-                .sessionRegistry(sessionRegistry());
+//        http
+//                .sessionManagement()
+//                .maximumSessions(1)
+//                .sessionRegistry(sessionRegistry());
 
         http
                 .authorizeRequests()
@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .rememberMe()
                     .rememberMeParameter("remember-me")
                     .rememberMeCookieName("remember-me")
-                    .rememberMeServices(rememberMeServices())
+//                    .rememberMeServices(rememberMeServices())
 
                 .and()
                     .logout()
@@ -62,15 +62,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         }
 
-        @Bean
-        RememberMeServices rememberMeServices() {
-            SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
-            rememberMeServices.setAlwaysRemember(true);
-            return rememberMeServices;
-        }
-
-        @Bean
-        SpringSessionBackedSessionRegistry sessionRegistry() {
-            return new SpringSessionBackedSessionRegistry<>(this.sessionRepository);
-        }
+//        @Bean
+//        RememberMeServices rememberMeServices() {
+//            SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
+//            rememberMeServices.setAlwaysRemember(true);
+//            return rememberMeServices;
+//        }
+//
+//        @Bean
+//        SpringSessionBackedSessionRegistry sessionRegistry() {
+//            return new SpringSessionBackedSessionRegistry<>(this.sessionRepository);
+//        }
     }
